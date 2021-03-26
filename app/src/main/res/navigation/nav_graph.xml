@@ -10,5 +10,20 @@
         android:id="@+id/viewModelFlowFragment"
         android:name="com.continuedlearning.flow.ViewModelFlowFragment"
         android:label="view_model_flow_fragment"
-        tools:layout="@layout/view_model_flow_fragment" />
+        tools:layout="@layout/view_model_flow_fragment" >
+        <action
+            android:id="@+id/action_viewModelFlowFragment_to_advancedFlow"
+            app:destination="@id/advancedFlow"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/viewModelFlowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/advancedFlow"
+        android:name="com.continuedlearning.flow.advanced.ui.AdvancedFlow"
+        android:label="advanced_flow_fragment"
+        tools:layout="@layout/advanced_flow_fragment" >
+        <action
+            android:id="@+id/action_advancedFlow_to_viewModelFlowFragment"
+            app:destination="@id/viewModelFlowFragment" />
+    </fragment>
 </navigation>
