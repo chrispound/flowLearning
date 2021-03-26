@@ -18,6 +18,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+    <TextView
+        android:id="@+id/nonMainDisplayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Non main label"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/data" />
+
+
+    <TextView
+        android:id="@+id/nonMainDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flow has not yet started"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nonMainDisplayLabel" />
+
+    <TextView
+        android:id="@+id/controlFlowLabel"
+        app:layout_constraintTop_toBottomOf="@id/nonMainDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Control FLow"
+        />
+
     <Button
         android:id="@+id/create"
         android:layout_width="wrap_content"
@@ -26,7 +60,7 @@
         android:text="Create Flow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/data"
+        app:layout_constraintTop_toBottomOf="@id/controlFlowLabel"
         tools:text="Create Flow" />
 
     <Button
@@ -40,35 +74,25 @@
         app:layout_constraintTop_toBottomOf="@id/create" />
 
     <Button
-        android:id="@+id/stopFlow"
+        android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Stop Flow"
+        android:text="Complete Flow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/collect" />
 
-    <TextView
-        android:id="@+id/nonMainDisplayLabel"
+    <Button
+        android:id="@+id/cancelException"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Non main label"
+        android:layout_marginTop="24dp"
+        android:text="Cancel With Exception"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stopFlow" />
-
-
-    <TextView
-        android:id="@+id/nonMainDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Flow has not yet started"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nonMainDisplayLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/cancel" />
 
     <Button
         android:id="@+id/goToAdvancedFlow"
@@ -79,5 +103,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/manualFlow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelException"
+        tools:text="FLow Not Started" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

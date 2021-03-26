@@ -27,6 +27,8 @@ class ViewModelFlowViewModel(demoRepo: DemoDataRepository) : ViewModel() {
     val latestNumNonMain : LiveData<Int>
     get() = _latestNumNonMain
 
+    val latestNumFlow = demoRepo.latestData
+
     override fun onCleared() {
         super.onCleared()
         Log.d("onCleared", "viewModelCleared")
