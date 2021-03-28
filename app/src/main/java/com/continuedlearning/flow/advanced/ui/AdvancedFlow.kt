@@ -7,12 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.continuedlearning.flow.R
+import com.continuedlearning.flow.databinding.AdvancedFlowFragmentBinding
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class AdvancedFlow : Fragment() {
 
     companion object {
         fun newInstance() = AdvancedFlow()
     }
+
+    var _binding: AdvancedFlowFragmentBinding? = null
+    val binding
+        get() = _binding!!
 
     private lateinit var viewModel: AdvancedFlowViewModel
 
@@ -20,13 +27,16 @@ class AdvancedFlow : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.advanced_flow_fragment, container, false)
+        _binding = AdvancedFlowFragmentBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AdvancedFlowViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.searchApiResult.observe(viewLifecycleOwner) {
+            binding.searchResults.text = it
+        }
     }
 
 }

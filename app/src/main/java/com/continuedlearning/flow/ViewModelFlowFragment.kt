@@ -48,9 +48,10 @@ class ViewModelFlowFragment : Fragment() {
                     Log.d("fragmentFlow", " I've been created")
                     Log.d("fragmentFlow", "Current Thread: ${Thread.currentThread().name}")
                     while(true) {
+                        manualFlow.text = "Manual Flow in producer loading number"
+                        delay(1000)
                         val latestNumber = Math.random() * 100
                         emit(latestNumber.toInt())
-                        delay(1500)
                         if(showError) {
                             throw Throwable("Flow cancelled with exception")
                         }
@@ -74,6 +75,7 @@ class ViewModelFlowFragment : Fragment() {
                          }
                     ?.collect {
                          manualFlow.text = "Manual Flow Collected: $it"
+                        delay(1500)
                     }
 
                 }
