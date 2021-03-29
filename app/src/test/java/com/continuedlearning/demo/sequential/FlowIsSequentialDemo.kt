@@ -1,12 +1,22 @@
 package com.continuedlearning.demo.sequential
 
 import com.continuedlearning.flow.Demo
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
 
 class FlowIsSequentialDemo : Demo {
     private val demoData = listOf(1, 5, 8, -1, -3, -6)
     override suspend fun launchDemo() {
         helloSequence()
         helloIterable()
+    }
+
+    init {
+
+        callbackFlow<Int> {
+            offer(1)
+            awaitClose {  }
+        }
     }
 
     private fun helloSequence() {

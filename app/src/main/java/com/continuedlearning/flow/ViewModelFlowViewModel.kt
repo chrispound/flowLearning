@@ -3,12 +3,19 @@ package com.continuedlearning.flow
 import android.util.Log
 import androidx.lifecycle.*
 import com.continuedlearning.flow.repository.DemoDataRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
 
+@OptIn(InternalCoroutinesApi::class)
 class ViewModelFlowViewModel(demoRepo: DemoDataRepository) : ViewModel() {
+
+    val data =
+        flow {
+            while (currentCoroutineContext().isActive)
+                emit(Math.random() * 100)
+        }.asLiveData()
+
+
 
     private val _latestNum = demoRepo.latestData
         .onCompletion {
@@ -23,6 +30,7 @@ class ViewModelFlowViewModel(demoRepo: DemoDataRepository) : ViewModel() {
         .onCompletion {
             Log.d("latestDataFlow", "Flow completed")
         }
+
         .asLiveData()
     val latestNumNonMain : LiveData<Int>
     get() = _latestNumNonMain

@@ -1,13 +1,13 @@
 package com.continuedlearning.flow.advanced.ui
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
+import android.util.Log
+import androidx.lifecycle.*
 import com.continuedlearning.flow.advanced.data.ResultRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
 class AdvancedFlowViewModel : ViewModel() {
@@ -16,7 +16,42 @@ class AdvancedFlowViewModel : ViewModel() {
     get() = _searchApiResult
 
 
-    fun getSearchResult() {
+    val slowProducerFlow = flow {
+        for(i in 1..Int.MAX_VALUE) {
+            emit(i)
+        }
 
+        for(i in 1..Int.MAX_VALUE) {
+            emit(i)
+        }
     }
+
+    private val _stateFlowSample = MutableStateFlow(State.LOADING)
+    val stateFlowSample: StateFlow<State>
+        get() = _stateFlowSample.asStateFlow()
+
+    init {
+
+        viewModelScope.launch {
+            ResultRepository().makeRequest().flowOn(Dispatchers.IO)
+                .catch {
+                    _stateFlowSample.value = State.ERROR
+
+                }
+                .onCompletion {
+                    _stateFlowSample.value = State.DONE
+                }
+                .collect {
+                    _stateFlowSample.value = State.COMPLETE
+                }
+        }
+    }
+
+}
+
+enum class State {
+    LOADING,
+    COMPLETE,
+    ERROR,
+    DONE
 }

@@ -13,9 +13,7 @@
         tools:layout="@layout/view_model_flow_fragment" >
         <action
             android:id="@+id/action_viewModelFlowFragment_to_advancedFlow"
-            app:destination="@id/advancedFlow"
-            app:popUpToInclusive="true"
-            app:popUpTo="@id/viewModelFlowFragment" />
+            app:destination="@id/advancedFlow" />
     </fragment>
     <fragment
         android:id="@+id/advancedFlow"
