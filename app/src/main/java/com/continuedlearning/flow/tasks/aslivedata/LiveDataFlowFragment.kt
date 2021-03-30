@@ -1,12 +1,13 @@
-package com.continuedlearning.flow.tasks.useaflow
+package com.continuedlearning.flow.tasks.aslivedata
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
 import com.continuedlearning.flow.completedtasks.useaflow.ViewModelFlowViewModel
 
-class ViewModelFlowFragment : ContinuedLearningTaskFragment() {
+class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
 
     private val emittedItems = 0
     private val data = listOf(1,2,3,4)
@@ -24,11 +25,11 @@ class ViewModelFlowFragment : ContinuedLearningTaskFragment() {
     }
 
     override fun getTaskTitle(): String {
-       return "Emit all flow items from viewmodel.data to binding.taskOutput"
+       return "Covert flow to livedata and emit all items from viewmodel.data to binding.taskOutput"
     }
 
     override fun verifyTaskComplete():Boolean {
-        return emittedItems == data.size && binding.taskOutput.text.toString() == "1234"
+        return emittedItems == data.size && binding.taskOutput.text.toString() == "1234" && viewModel.data is LiveData<*>
     }
 
 

@@ -12,16 +12,13 @@
         android:label="view_model_flow_fragment"
         tools:layout="@layout/flow_task_fragment" >
         <action
-            android:id="@+id/action_viewModelFlowFragment_to_advancedFlow"
-            app:destination="@id/advancedFlow" />
+            android:id="@+id/action_viewModelFlowFragment_to_liveDataFlowFragment"
+            app:destination="@id/liveDataFlowFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/advancedFlow"
-        android:name="com.continuedlearning.flow.advanced.ui.AdvancedFlow"
-        android:label="advanced_flow_fragment"
-        tools:layout="@layout/advanced_flow_fragment" >
-        <action
-            android:id="@+id/action_advancedFlow_to_viewModelFlowFragment"
-            app:destination="@id/viewModelFlowFragment" />
-    </fragment>
+        android:id="@+id/liveDataFlowFragment"
+        android:name="com.continuedlearning.flow.tasks.aslivedata.LiveDataFlowFragment"
+        android:label="LiveDataFlowFragment" />
+
 </navigation>
