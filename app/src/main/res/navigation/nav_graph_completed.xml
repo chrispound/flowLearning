@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/viewModelFlowFragment"
-        android:name="com.continuedlearning.flow.tasks.useaflow.ViewModelFlowFragment"
+        android:name="com.continuedlearning.flow.completedtasks.useaflow.ViewModelFlowFragment"
         android:label="view_model_flow_fragment"
         tools:layout="@layout/flow_task_fragment" >
         <action
