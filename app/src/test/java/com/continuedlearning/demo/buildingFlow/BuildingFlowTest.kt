@@ -1,6 +1,9 @@
 package com.continuedlearning.demo.buildingFlow
 
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
 import org.junit.Test
 
 class BuildingFlowTest {
@@ -13,4 +16,17 @@ class BuildingFlowTest {
     fun buildAFlowWithOperators(input: List<Int>): Flow<String> {
         TODO("Not yet implemented")
     }
+
+    fun combineFlowTest(flowA: Flow<Any>, flowB: Flow<Any>): Flow<String> {
+        TODO("Not yet implemented")
+    }
+
+    fun catchCrashingFlow() =
+        flow {
+            emit(1)
+            throw Throwable("the flow has crashed")
+        }.onCompletion { throwable ->
+            if (throwable == null) assert(false)
+        }
+
 }
