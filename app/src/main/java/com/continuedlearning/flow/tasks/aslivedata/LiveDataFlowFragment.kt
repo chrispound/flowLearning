@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
-import com.continuedlearning.flow.completedtasks.useaflow.ViewModelFlowViewModel
+import com.continuedlearning.flow.tasks.useaflow.ViewModelFlowViewModel
 
 class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
 
