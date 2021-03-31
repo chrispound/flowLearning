@@ -1,0 +1,27 @@
+buildscript {
+    ext.kotlin_version = '1.4.30'
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}
