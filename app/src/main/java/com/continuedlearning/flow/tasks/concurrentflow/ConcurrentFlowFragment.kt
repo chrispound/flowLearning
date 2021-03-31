@@ -1,23 +1,22 @@
-package com.continuedlearning.flow.tasks.aslivedata
+package com.continuedlearning.flow.tasks.concurrentflow
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.LiveData
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
 import com.continuedlearning.flow.R
-import com.continuedlearning.flow.tasks.useaflow.ViewModelFlowViewModel
+import com.continuedlearning.flow.completedtasks.concurrentflow.ConcurrentFlowViewModel
 
-class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
+class ConcurrentFlowFragment : ContinuedLearningTaskFragment() {
 
     private val emittedItems = 0
     private val data = listOf(1,2,3,4)
 
-    private lateinit var viewModel: ViewModelFlowViewModel
+    private lateinit var viewModel: ConcurrentFlowViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelFlowViewModel(data)
+        viewModel = ConcurrentFlowViewModel()
     }
 
     override suspend fun executeTask(): Boolean {
@@ -26,15 +25,15 @@ class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
     }
 
     override fun getTaskTitle(): String {
-       return "Covert flow to livedata and emit all items from viewmodel.data to binding.taskOutput"
+       return "Fix the flow so it doesn't throw an exception"
     }
 
     override fun verifyTaskComplete():Boolean {
-        return emittedItems == data.size && binding.taskOutput.text.toString() == "1234" && viewModel.data is LiveData<*>
+        return viewModel.flowThrewException
     }
 
     override fun getNextTaskAction(): Int {
-        return R.id.action_liveDataFlowFragment_to_concurrentFlowFragment
+        return R.id.action_concurrentFlowFragment_to_stateFlowFragment
     }
 
 

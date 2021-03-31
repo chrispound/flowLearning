@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
+import com.continuedlearning.flow.R
 import com.continuedlearning.flow.completedtasks.useaflow.ViewModelFlowViewModel
 
 class ViewModelFlowFragment : ContinuedLearningTaskFragment() {
@@ -29,6 +30,10 @@ class ViewModelFlowFragment : ContinuedLearningTaskFragment() {
 
     override fun verifyTaskComplete():Boolean {
         return emittedItems == data.size && binding.taskOutput.text.toString() == "1234"
+    }
+
+    override fun getNextTaskAction(): Int {
+        return R.id.action_viewModelFlowFragment_to_liveDataFlowFragment
     }
 
 

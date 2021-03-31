@@ -12,16 +12,29 @@
         android:label="view_model_flow_fragment"
         tools:layout="@layout/flow_task_fragment" >
         <action
-            android:id="@+id/action_viewModelFlowFragment_to_advancedFlow"
-            app:destination="@id/advancedFlow" />
+            android:id="@+id/action_viewModelFlowFragment_to_liveDataFlowFragment"
+            app:destination="@id/liveDataFlowFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/liveDataFlowFragment"
+        android:name="com.continuedlearning.flow.completedtasks.aslivedata.LiveDataFlowFragment"
+        android:label="LiveDataFlowFragment" >
+        <action
+            android:id="@+id/action_liveDataFlowFragment_to_concurrentFlowFragment"
+            app:destination="@id/concurrentFlowFragment" />
     </fragment>
     <fragment
-        android:id="@+id/advancedFlow"
-        android:name="com.continuedlearning.flow.advanced.ui.AdvancedFlow"
-        android:label="advanced_flow_fragment"
-        tools:layout="@layout/advanced_flow_fragment" >
+        android:id="@+id/concurrentFlowFragment"
+        android:name="com.continuedlearning.flow.completedtasks.concurrentflow.ConcurrentFlowFragment"
+        android:label="ConcurrentFlowFragment" >
         <action
-            android:id="@+id/action_advancedFlow_to_viewModelFlowFragment"
-            app:destination="@id/viewModelFlowFragment" />
+            android:id="@+id/action_concurrentFlowFragment_to_stateFlowFragment"
+            app:destination="@id/stateFlowFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/stateFlowFragment"
+        android:name="com.continuedlearning.flow.completedtasks.stateflow.StateFlowFragment"
+        android:label="StateFlowFragment" />
+
 </navigation>

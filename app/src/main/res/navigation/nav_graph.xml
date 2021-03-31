@@ -19,6 +19,22 @@
     <fragment
         android:id="@+id/liveDataFlowFragment"
         android:name="com.continuedlearning.flow.tasks.aslivedata.LiveDataFlowFragment"
-        android:label="LiveDataFlowFragment" />
+        android:label="LiveDataFlowFragment" >
+        <action
+            android:id="@+id/action_liveDataFlowFragment_to_concurrentFlowFragment"
+            app:destination="@id/concurrentFlowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/concurrentFlowFragment"
+        android:name="com.continuedlearning.flow.tasks.concurrentflow.ConcurrentFlowFragment"
+        android:label="ConcurrentFlowFragment" >
+        <action
+            android:id="@+id/action_concurrentFlowFragment_to_stateFlowFragment"
+            app:destination="@id/stateFlowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stateFlowFragment"
+        android:name="com.continuedlearning.flow.tasks.stateflow.StateFlowFragment"
+        android:label="StateFlowFragment" />
 
 </navigation>

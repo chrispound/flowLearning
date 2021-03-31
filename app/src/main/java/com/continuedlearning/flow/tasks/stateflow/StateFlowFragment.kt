@@ -2,6 +2,7 @@ package com.continuedlearning.flow.tasks.stateflow
 
 
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
+import com.continuedlearning.flow.completedtasks.stateflow.StateFlowViewModel
 
 class StateFlowFragment: ContinuedLearningTaskFragment() {
 
@@ -14,6 +15,10 @@ class StateFlowFragment: ContinuedLearningTaskFragment() {
 
     override fun verifyTaskComplete(): Boolean {
         return viewModel._mutableStateFlow.subscriptionCount.value > 1
+    }
+
+    override fun getNextTaskAction(): Int {
+        TODO("Not yet implemented")
     }
 
     override suspend fun executeTask(): Boolean {

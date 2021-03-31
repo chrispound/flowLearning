@@ -2,14 +2,14 @@ package com.continuedlearning.flow.completedtasks.aslivedata
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
+import com.continuedlearning.flow.R
 
 class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
 
-    private val emittedItems = 0
+    private var emittedItems = 0
     private val data = listOf(1,2,3,4)
 
     private lateinit var viewModel: LiveDataFlowViewModel
@@ -19,12 +19,14 @@ class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
         viewModel = LiveDataFlowViewModel(data)
 
         viewModel.data.observe(viewLifecycleOwner) { item ->
+            emittedItems++
             binding.taskOutput.append(item.toString())
         }
+
     }
 
     override suspend fun executeTask(): Boolean {
-        Toast.makeText(requireContext(), "Not yet implemented", Toast.LENGTH_SHORT ).show()
+
         return verifyTaskComplete()
     }
 
@@ -34,6 +36,10 @@ class LiveDataFlowFragment : ContinuedLearningTaskFragment() {
 
     override fun verifyTaskComplete():Boolean {
         return emittedItems == data.size && binding.taskOutput.text.toString() == "1234" && viewModel.data is LiveData<*>
+    }
+
+    override fun getNextTaskAction(): Int {
+       return R.id.action_liveDataFlowFragment_to_concurrentFlowFragment
     }
 
 

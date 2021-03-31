@@ -1,5 +1,6 @@
 package com.continuedlearning.flow.tasks.stateflow
 
+import com.continuedlearning.flow.completedtasks.stateflow.State
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlin.random.Random
 

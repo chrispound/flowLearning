@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.continuedlearning.flow.ContinuedLearningTaskFragment
+import com.continuedlearning.flow.R
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -37,5 +38,8 @@ class ViewModelFlowFragment : ContinuedLearningTaskFragment() {
         return emittedItems == data.size && binding.taskOutput.text.toString() == "1234"
     }
 
+    override fun getNextTaskAction(): Int {
+        return R.id.action_viewModelFlowFragment_to_liveDataFlowFragment
+    }
 
 }
