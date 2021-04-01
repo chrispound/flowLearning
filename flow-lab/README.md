@@ -1,11 +1,15 @@
-# Setup
+# Flow Lab
+This lab focuses on interacting with Kotlin flows in various implementations. Several helper and setup functions already exist in UsefulFunctions.
+Try working through the list of questions or just start writing code with Kotlin flow.
 
-###This lab was made to make it easy for you to create, test, and experiment with kotlin flows.
+## Setup
 
-##Unit Tests
+Import the project into Intellij
+
+## Unit Tests
 There are a series of unit tests that need to be implemented or are broken
 
-##Some questions to help you get started
+## Some questions to help you get started
 - What is a flow
 - What is a producer
 - What is an intermediate operator? 
