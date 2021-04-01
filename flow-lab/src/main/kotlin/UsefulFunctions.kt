@@ -1,4 +1,9 @@
+import com.continuedlearning.flow.service.StateEmittingService
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class UsefulFunctions {
 
@@ -16,6 +21,21 @@ class UsefulFunctions {
                 throw Throwable("Cannot call on main thread")
             }
             return ApiData("Got result on non main thread")
+        }
+
+        //Kickstart and collecting a state emitting service
+        fun kickstartSharedFlow() = runBlocking {
+            val service = StateEmittingService()
+
+            GlobalScope.launch {
+                service.start(1000)
+
+            }
+
+            launch {
+                service.stateFlow.collect { println("flow1: $it") }
+            }
+
         }
 
 
