@@ -8,7 +8,6 @@ fun main() = runBlocking<Unit> {
     val main = Main()
     println(main.helloFlow())
     main.kickstartSharedFlow()
-
 }
 
 @ExperimentalCoroutinesApi
@@ -19,16 +18,21 @@ class Main {
         return ("Hello Flow")
     }
 
-    suspend fun kickstartSharedFlow() {
+    fun kickstartSharedFlow() = runBlocking {
+
         val service = StateEmittingService()
 
         GlobalScope.launch {
             service.start(1000)
+
         }
 
-        service.stateFlow.collect { println("flow1: $it") }
+        launch {
+            service.stateFlow.collect { println("flow1: $it") }
+        }
+
     }
 
-}
 
+}
 
