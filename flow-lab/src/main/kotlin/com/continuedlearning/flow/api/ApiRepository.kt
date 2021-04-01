@@ -16,10 +16,4 @@ class ApiRepository(var callback: ApiCallback) {
         delay(5000)
         callback.onError(ApiError("Error"))
     }
-
-    suspend fun nonMainThreadSafeWOrk() {
-        if(Thread.currentThread().name == "Main") {
-            throw Throwable("Cannot call on main thread")
-        }
-    }
 }
